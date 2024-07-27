@@ -223,7 +223,7 @@ export default {
             formData.append('foto', this.usuario.foto);
 
             if (this.editando) {
-                axios.post(`/api/edita_cliente/${this.idClienteParaEditar}`, formData, {
+                axios.post(process.env.VUE_APP_API_URL+`edita_cliente/${this.idClienteParaEditar}`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 }).then(function () {
                     Swal.fire({
@@ -243,7 +243,7 @@ export default {
                     });
                 });
             } else {
-                axios.post('/api/cadastro_cliente', formData, {
+                axios.post(process.env.VUE_APP_API_URL+'cadastro_cliente', formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 }).then(response => {
                     Swal.fire({
@@ -314,7 +314,7 @@ export default {
             this.$router.push('/login');
         },
         buscarClientes() {
-            axios.post('/api/busca_clientes', { params: this.filtros })
+            axios.post(process.env.VUE_APP_API_URL+'busca_clientes', { params: this.filtros })
                 .then(response => {
                     this.clientes = response.data.users;
                     this.initDataTable();
@@ -373,7 +373,7 @@ export default {
             this.idClienteParaEditar = null;
         },
         editar(id) {
-            axios.get(`/api/busca_cliente_id/${id}`)
+            axios.get(process.env.VUE_APP_API_URL+`busca_cliente_id/${id}`)
                 .then(response => {
                     const cliente = response.data;
                     this.usuario.nome = cliente.nome;
@@ -405,7 +405,7 @@ export default {
                 cancelButtonText: "Não"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`/api/excluir_clientes/${id}`)
+                    axios.delete(process.env.VUE_APP_API_URL+`excluir_clientes/${id}`)
                         .then(response => {
                             if (response.data.status) {
                                 Swal.fire({

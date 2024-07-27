@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         login() {
-            axios.post('/api/login', {
+            axios.post(process.env.VUE_APP_API_URL+'login', {
                 email: this.email,
                 senha: this.senha
             })

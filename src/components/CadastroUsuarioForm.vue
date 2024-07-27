@@ -90,7 +90,7 @@ export default {
                 });
                 return;
             }
-            axios.post('/api/cadastro_usuario', {
+            axios.post(process.env.VUE_APP_API_URL+'cadastro_usuario', {
                 nome: this.nome,
                 email: this.email,
                 senha: this.senha
