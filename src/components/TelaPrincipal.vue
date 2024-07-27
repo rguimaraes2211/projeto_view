@@ -334,7 +334,7 @@ export default {
                 data: this.clientes,
                 columns: [
                     { data: 'id' },
-                    { data: 'foto', render: data => `<img src="/storage/${data}" alt="Foto" width="50" height="50">` },
+                    { data: 'foto', render: data => `<img src=" https://mfimpactodigital.com.br/public/storage/${data}" alt="Foto" width="50" height="50">` },
                     { data: 'nome' },
                     { data: 'cpf' },
                     { data: 'nascimento' },
